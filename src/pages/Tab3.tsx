@@ -1,4 +1,4 @@
-import { IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab3.css';
 
 const Tab3: React.FC = () => {
@@ -6,26 +6,28 @@ const Tab3: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Perfil de usuario</IonTitle>
+          <IonTitle>Perfil del Usuario</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Perfil de usuario</IonTitle>
+            <IonTitle size="large">Perfil del Usuario</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <div className="container">
+        <div className="card-container">
           <IonCard className="card">
             <img
               src="https://avatars.githubusercontent.com/u/173958328?v=4"
-              alt="Foto de perfil"
+              alt="Foto de Perfil"
             />
-            <IonCardTitle>Carlos Pazmino Zambrano</IonCardTitle>
-            <IonCardSubtitle>crpazmino@puce.edu.ec</IonCardSubtitle>
+            <IonCardHeader>
+              <IonCardTitle>Carlos Pazmino</IonCardTitle>
+              <IonCardSubtitle>Carlos Pazmino</IonCardSubtitle>
+            </IonCardHeader>
             <IonCardContent>
-              <p>Desarrollador de software formado en la Pontificia Universidad Católica del Ecuador.</p>
-              <p>Si deseas contactarme, buscarme buscame en google</p>
+              <p>Desarrollador Web</p>
+              <p>Estudiante</p>
             </IonCardContent>
           </IonCard>
         </div>
