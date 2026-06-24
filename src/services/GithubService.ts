@@ -38,4 +38,25 @@ export const fetchRepositories = async (): Promise<Repository[]> => {
   }
 };
 
+export const createRepository = async (
+  data: Pick<Repository, 'name' | 'description'>,
+): Promise<Repository> => {
+  try {
+    const response = await axios.post(`${GITHUB_API_URL}/user/repos`, data, {
+      headers: {
+        Authorization: `Bearer ${GITHUB_API_TOKEN}`,
+      },
+    });
+
+    if (response.status !== 201) {
+      throw new Error(`Error creando repositorio: ${response.statusText}`);
+    }
+
+    return response.data;
+  } catch (error) {
+    console.error('Error creando repositorio:', error);
+    throw error;
+  }
+};
+
 export const getRepos = fetchRepositories;
