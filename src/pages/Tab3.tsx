@@ -1,7 +1,16 @@
+import { useEffect, useState } from 'react';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import LoadingSpinner from '../components/LoadingSpinner';
 import './Tab3.css';
 
 const Tab3: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <IonPage>
       <IonHeader>
@@ -16,20 +25,24 @@ const Tab3: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <div className="card-container">
-          <IonCard className="card">
-            <img
-              src="https://avatars.githubusercontent.com/u/173958328?v=4"
-              alt="Foto de Perfil"
-            />
-            <IonCardHeader>
-              <IonCardTitle>Carlos Pazmino</IonCardTitle>
-              <IonCardSubtitle>Carlos Pazmino</IonCardSubtitle>
-            </IonCardHeader>
-            <IonCardContent>
-              <p>Desarrollador Web</p>
-              <p>Estudiante</p>
-            </IonCardContent>
-          </IonCard>
+          {loading ? (
+            <LoadingSpinner message="Cargando perfil..." />
+          ) : (
+            <IonCard className="card">
+              <img
+                src="https://avatars.githubusercontent.com/u/173958328?v=4"
+                alt="Foto de Perfil"
+              />
+              <IonCardHeader>
+                <IonCardTitle>Carlos Pazmino</IonCardTitle>
+                <IonCardSubtitle>Carlos Pazmino</IonCardSubtitle>
+              </IonCardHeader>
+              <IonCardContent>
+                <p>Desarrollador Web</p>
+                <p>Estudiante</p>
+              </IonCardContent>
+            </IonCard>
+          )}
         </div>
       </IonContent>
     </IonPage>
