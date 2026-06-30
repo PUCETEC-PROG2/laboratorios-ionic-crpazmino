@@ -12,7 +12,12 @@ import {
 import { pencil, trash } from 'ionicons/icons';
 import { Repository } from '../interfaces/Repository';
 
-const RepoItem: React.FC<Repository> = ({ name, description, language, owner }) => {
+interface RepoItemProps extends Repository {
+  onEdit?: () => void;
+  onDelete?: () => void;
+}
+
+const RepoItem: React.FC<RepoItemProps> = ({ name, description, language, owner, onEdit, onDelete }) => {
   return (
     <IonItemSliding>
       <IonItem>
@@ -27,10 +32,10 @@ const RepoItem: React.FC<Repository> = ({ name, description, language, owner }) 
       </IonItem>
 
       <IonItemOptions>
-        <IonItemOption>
+        <IonItemOption onClick={onEdit}>
           <IonIcon icon={pencil} slot="icon-only" />
         </IonItemOption>
-        <IonItemOption color="danger">
+        <IonItemOption color="danger" onClick={onDelete}>
           <IonIcon icon={trash} slot="icon-only" />
         </IonItemOption>
       </IonItemOptions>
